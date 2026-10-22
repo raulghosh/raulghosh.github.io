@@ -1,102 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <title>Rahul Ghosh's Personal Webpage</title>
-    <style>
-        #subpage-content {
-            margin-top: 20px;
-            border-top: 2px solid #000;
-            padding-top: 20px;
-        }
-        .tab {
-            display: inline-block;
-            margin-right: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-bottom: none;
-            cursor: pointer;
-        }
-        .tab.active {
-            background-color: #f0f0f0;
-            border-top: 2px solid blue;
-        }
-        #subpage-content {
-            border-top: 2px solid #000;
-            padding-top: 20px;
-        }
-        /* Hide sections by default */
-        .tab-content {
-            display: none;
-        }
-        /* Show active section */
-        .tab-content.active {
-            display: block;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rahul Ghosh</title>
+<meta name="description" content="Rahul Ghosh: projects in investing tools, AI agents and quantitative trading.">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --card: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --muted: #77756f;
+  --border: rgba(11,11,11,0.10); --accent: #2a78d6; --tag: #f0efea; --todo: #fff3c4;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d; --card: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #8f8d86;
+    --border: rgba(255,255,255,0.10); --accent: #5b9fec; --tag: #262624; --todo: #4a3d0c;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+mark.todo { background: var(--todo); color: inherit; padding: 0 3px; border-radius: 3px; }
+
+header { padding: 56px 0 28px; display: flex; gap: 28px; align-items: center; }
+header img { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border); }
+header h1 { margin: 0 0 12px; font-size: 38px; line-height: 1.1; letter-spacing: -0.01em; }
+header .headline { margin: 8px 0 14px; font-size: 18px; color: var(--ink-2); }
+.links { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 0; margin: 0; list-style: none; font-size: 15px; }
+
+section { padding: 28px 0; border-top: 1px solid var(--border); }
+section > h2 { margin: 0 0 6px; font-size: 22px; }
+section > p.lead { margin: 0 0 18px; color: var(--ink-2); max-width: 70ch; }
+.about p { max-width: 70ch; margin: 0 0 12px; }
+h3.group { margin: 22px 0 12px; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.card h4 { margin: 0; font-size: 17px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+.tags span { background: var(--tag); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; color: var(--ink-2); }
+.actions { display: flex; gap: 16px; font-size: 14.5px; font-weight: 600; }
+.badge { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11.5px; font-weight: 600; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); }
+
+footer { padding: 28px 0 48px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+@media (max-width: 600px) {
+  header { flex-direction: column; align-items: flex-start; gap: 18px; padding-top: 36px; }
+  header h1 { font-size: 32px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
 </head>
 <body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>Menu</strong></li>
-        </ul>
-        <ul>
-            <li class="tab active" data-target="#about">About Me</li>
-            <li class="tab" data-target="#cv">CV</li>
-            <li class="tab" data-target="#projects">Projects</li>
-            <li class="tab" data-target="#blog">Blog</li>
-            <li class="tab"
-    </nav>
-    <main class="container">
-        <div id="subpage-content">
-            <!-- About Me Section -->
-            <section id="about">
-                <h2>About Me</h2>
-                <p>Your professional summary goes here.</p>
-            </section>
+<div class="wrap">
 
-            <!-- CV Section -->
-            <section id="cv" style="display:none;">
-                <h2>CV</h2>
-                <p>Details about your CV or a link to download it.</p>
-            </section>
+<header>
+  <img src="ProfilePicture.jpg" alt="Photo of Rahul Ghosh" width="132" height="132">
+  <div>
+    <h1>Rahul Ghosh</h1>
+    <ul class="links">
+      <li><a href="https://github.com/raulghosh">GitHub</a></li>
+    </ul>
+  </div>
+</header>
 
-            <!-- Projects Section -->
-            <section id="projects" style="display:none;">
-                <h2>Projects</h2>
-                <p>Information about your projects, including descriptions and links to GitHub repositories, if applicable.</p>
-            </section>
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="lead">Tools I've built for investing, research and trading. Each links to its code.</p>
 
-            <!-- Blog Section -->
-            <section id="blog" style="display:none;">
-                <h2>Blog</h2>
-                <p>Links to your latest blog posts or blog content.</p>
-            </section>
+  <h3 class="group">Investing tools and AI agents</h3>
+  <div class="grid">
+    <article class="card">
+      <h4>Real Estate Deal Evaluator</h4>
+      <p>Gives rental-property investors a buy, negotiate or pass verdict and the most they should offer. It models upkeep by the home's age, taxes for the investor's situation, the mortgage rate for their credit score, and value from zip-code sales. A built-in Claude assistant runs the model to answer what-if questions.</p>
+      <div class="tags"><span>Python</span><span>Pydantic</span><span>Claude API</span><span>Docker</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/RealEstateEvaluator">Code</a></div>
+    </article>
+    <article class="card">
+      <h4>Small Business Deal Pipeline</h4>
+      <p>An AI pipeline for buying small cash-flowing businesses (janitorial, car wash, laundromat) as a passive investor. Each stage, from vetting brokers to analysis and financing, is a specialist agent, and deals move through a tracked state machine.</p>
+      <div class="tags"><span>Claude Code</span><span>AI agents</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/SmallBusinessDealPipeline">Code</a></div>
+    </article>
+    <article class="card">
+      <h4>Filing Intelligence</h4>
+      <p>A multi-agent analyst for SEC filings. It retrieves facts and narrative from 10-Ks and 10-Qs, runs 13 specialist agents (credit, valuation, forensic accounting, governance and more), and writes an investment-committee memo. The LLM sets the assumptions; deterministic code computes the numbers.</p>
+      <div class="tags"><span>FastAPI</span><span>Anthropic</span><span>pgvector</span><span>Celery</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/MultiAgentFinancialAnalyst">Code</a></div>
+    </article>
+  </div>
 
-            <!-- Hobbies Section -->
-            <section id="hobbies" style="display:none;">
-                <h2>Hobbies</h2>
-                <p>Details about your hobbies and interests.</p>
-            </section>
-        </div>
-    </main>
-    <footer class="container">
-        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
-    </footer>
+  <h3 class="group">Quantitative trading and markets</h3>
+  <div class="grid">
+    <article class="card">
+      <h4>Statistical Arbitrage</h4>
+      <p>A framework for trading cointegrated commodity pairs: statistical tests, signals, position sizing and drawdown limits, vectorised backtests, and paper trading on Alpaca. A regime filter pauses trading when the pair's relationship breaks down.</p>
+      <div class="tags"><span>Python</span><span>Backtesting</span><span>Alpaca</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/StatisticalArbitrage">Code</a></div>
+    </article>
+    <article class="card">
+      <h4>Calendar Spread Scanner</h4>
+      <p>Decision support for SPX, XSP and SPY calendar spreads: volatility-regime classification, a gated candidate scanner, exit rules for open positions, a scenario grid and a trade journal. Read-only by design: it never places orders.</p>
+      <div class="tags"><span>Streamlit</span><span>Plotly</span><span>SQLAlchemy</span><span>Schwab API</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/CalendarSpreadsTrading">Code</a></div>
+    </article>
+    <article class="card">
+      <h4>Iron Fly and Condor Signals</h4>
+      <p>A signal engine for defined-risk SPX option structures: whether conditions favor selling premium, which structure and size to use, and how to manage the position afterward. Signals only, with no order placement.</p>
+      <div class="tags"><span>Python</span><span>Options</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/FlysCondorsTrading">Code</a></div>
+    </article>
+    <article class="card">
+      <h4>G7 Liquidity Regimes</h4>
+      <p>Classifies each G7 economy as loosening, peak, tightening or trough from central-bank and fiscal conditions, updated monthly. An interactive app lets you reweight the two pillars and watch regimes change.</p>
+      <div class="tags"><span>Streamlit</span><span>pandas</span><span>Macro</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/LiquidityRegimes">Code</a></div>
+    </article>
+    <article class="card">
+      <h4>Breakout Screener</h4>
+      <p>Finds US stocks early in a large move: breakout and momentum structure combined with relative strength, sector themes and a news-catalyst check.</p>
+      <div class="tags"><span>Python</span><span>Alpaca</span><span>Claude API</span></div>
+      <div class="actions"><a href="https://github.com/raulghosh/BreakoutTrading">Code</a></div>
+    </article>
+  </div>
+</section>
 
-    <script>
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                let targetSection = document.querySelector(this.getAttribute('href'));
-                document.querySelectorAll('main #subpage-content section').forEach(section => {
-                    section.style.display = 'none';
-                });
-                targetSection.style.display = 'block';
-            });
-        });
-    </script>
+<footer>
+  More on <a href="https://github.com/raulghosh">GitHub</a>.
+</footer>
+
+</div>
 </body>
 </html>
